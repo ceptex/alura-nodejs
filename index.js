@@ -1,6 +1,11 @@
+import fs from 'fs';
 import chalk from 'chalk';
 
-console.log(chalk.blue('olá mundo'));
+function pegaArquivo(caminhoDoArquivo) {
+    const encoding = 'utf-8';
+    fs.readFile(caminhoDoArquivo, encoding, (_, texto) => {
+        console.log(chalk.green(texto));
+    });
+}
 
-console.log('São geralmente recuperados a partir de um objeto [FileList](https://developer.mozilla.org/pt-BR/docs/Web/API/FileList) que é retornado como resultado da seleção, pelo usuário, de arquivos através do elemento');
-console.log('tilizado em operações de arrastar e soltar, ou a partir da API `mozGetAsFile()`');
+pegaArquivo('./arquivos/texto.md');
